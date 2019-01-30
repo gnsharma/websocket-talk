@@ -1,10 +1,10 @@
 // node-tweet-stream is a node module which provides events on new tweets
 const Twitter = require('node-tweet-stream');
 const tw = new Twitter({
-  consumer_key: 'bWxrU2OGsVAIIsigbWaX5Amdt',
-  consumer_secret: '2qtbienGNjoh3G68pKfz4Q1NSxgp8OtajeDROWYK1WPcx6D6eB',
-  token: '1048270719316975616-9y66wqgTEDka73f2XLIqCiUwGbAUxX',
-  token_secret: 'n9WlWkpebEX2nX8XO025awaBl1q5LTir7iBpHsZLvN7Go'
+  consumer_key: '',
+  consumer_secret: '',
+  token: '',
+  token_secret: ''
 });
 
 // ws is a node module to use websocket on server
