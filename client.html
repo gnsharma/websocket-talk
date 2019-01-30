@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <title> Websockets Demo </title>
+    <style>
+      button:disabled {
+        opacity: 0.5 !important;
+        cursor: not-allowed !important;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <span id='info'> No tweets currently </span>
+    <button id='start'> Start Websockets Demo </button>
+    <button id='close' disabled> Close Websockets Demo </button>
+    <ul>
+    </ul>
+
+  <script>
+    const infoElement = document.getElementById('info');
+    const ulElement = document.querySelector('ul');
+    const startButton = document.getElementById('start');
+    const closeButton = document.getElementById('close');
+
+    let ws;
+
+    // add click event handler on start button
+    startButton.addEventListener('click', () => {
+      if (startButton.textContent.trim() === 'Start Websockets Demo') {
+        startButton.textContent = 'Started Websockets Demo';
+        closeButton.removeAttribute('disabled');
+        startButton.setAttribute('disabled', '');
+
+        // Connecting to the server on the given url.
+        ws = new WebSocket('ws://localhost:8080');
+
+        // Event handler for open event from server
+        ws.onopen = function(message) {
+          infoElement.textContent = 'Connection established';
+
+          // Send a message to the server
+          ws.send('This is a message sent from browser to server using WebSockets.');
+        };
+
+        // Event handler for receiving messages from server
+        ws.onmessage = function(message) {
+          console.log('Message received', message);
+          const li = document.createElement('li');
+          li.textContent = message.data;
+          ulElement.appendChild(li);
+        };
+      } else {
+        alert('Demo is already started.')
+      }
+
+    });
+
+    // add click event handler on close button
+    closeButton.addEventListener('click', () => {
+      if (startButton.textContent.trim() === 'Started Websockets Demo') {
+        startButton.textContent = 'Start Websockets Demo';
+        startButton.removeAttribute('disabled');
+        closeButton.setAttribute('disabled', '');
+
+        // Ask server to close the WebSocket connection
+        ws.close(1000, 'Closing Connection Normally');
+
+        // Event handler for closed connections
+        ws.onclose = function(message) {
+          infoElement.textContent = 'Connection closed';
+        };
+
+      } else {
+        alert('Demo is already closed.');
+      }
+    });
+  </script>
+
+  </body>
+</html>

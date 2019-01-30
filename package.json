@@ -1,0 +1,25 @@
+{
+  "name": "websocket-talk",
+  "version": "0.1.0",
+  "description": "code to demonstrate websocket",
+  "main": "server.js",
+  "dependencies": {
+    "node-tweet-stream": "2.0.3",
+    "ws": "6.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gnsharma/websocket-talk.git"
+  },
+  "author": "Govind N Sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gnsharma/websocket-talk/issues"
+  },
+  "homepage": "https://github.com/gnsharma/websocket-talk#readme"
+}
