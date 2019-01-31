@@ -30,7 +30,7 @@ wss.on('connection', ws => {
     tw.on('tweet', tweet => {
       console.log(tweet.text);
       // send message event to client with tweet text
-      ws.send(tweet.text);
+      if (ws.readyState === 1) ws.send(tweet.text);
     });
   }, 2000);
 
